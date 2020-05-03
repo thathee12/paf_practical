@@ -28,7 +28,7 @@
 					});
 				</script>
 
-				<form id="formAppoint" name="formAppoint">
+				<form id="formAppoint" name="formAppoint" method="post" action="index.jsp">
 					Placed Date: <input id="placedDate" name="placedDate" type="text"
 						class="form-control form-control-sm"> <br>
 					Appointment Date: <input id="appointDate" name="appointDate"
@@ -38,10 +38,10 @@
 					ID: <input id="patientID" name="patientID" type="text"
 						class="form-control form-control-sm"> <br> Cause: <input
 						id="cause" name="casuse" type="text"
-						class="form-control form-control-sm"> <br> <input
-						id="btnSave" name="btnSave" type="button" value="Save"
-						class="btn btn-primary"> <input type="hidden"
-						id="hidAppointIDSave" name="hidAppointIDSave" value="">
+						class="form-control form-control-sm">
+						 <br> 
+						 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
+						<input type="hidden"id= "hidAppointIDSave" name="hidAppointIDSave" value="">
 				</form>
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>

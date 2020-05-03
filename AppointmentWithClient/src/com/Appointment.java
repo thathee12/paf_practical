@@ -23,8 +23,7 @@ public class Appointment {
 		return con;
 	}
 
-	public String insertAppointment(String placed_date, String appoint_date, String cause, String patientID,
-			String doctorID, String day) {
+	public String insertAppointment(String placed_date, String appoint_date, String cause, String patientID,String doctorID) {
 
 		String output = "";
 
@@ -36,7 +35,7 @@ public class Appointment {
 			}
 
 			// create a prepared statement
-			String query = " insert into appointments(`appointmentID`,`pADate`,`aDate`,`aCause`,`aPatient`,`aDoctor`)"
+			String query = " insert into appointments( `aID`,`aPlacedDate`,`aAppointDate`,`doctorID`,`patientID`,`cause`)"
 					+ " values (?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -80,7 +79,7 @@ public class Appointment {
 			}
 
 			// Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>Appointment ID</th><th>Placed Date</th>"
+			output = "<table border=\"1\"><tr><th>&nbsp; Appointment ID &nbsp; </th><th>Placed Date</th>"
 					+ "<th>Appointment Date</th><th>Patient ID</th><th>Doctor ID</th><th>Cause</th>"
 					+ "<th>Update</th><th>Remove</th></tr>";
 
@@ -128,8 +127,8 @@ public class Appointment {
 		return output;
 	}
 
-	/*public String updateAppointment(String ID, String placed_date, String appoint_date, String cause, String patientID,
-			String doctorID, String day) {
+	public String updateAppointment(String ID, String placed_date, String appoint_date, String doctorID,
+			String patientID, String cause) {
 		String output = "";
 
 		try {
@@ -140,8 +139,8 @@ public class Appointment {
 			}
 
 			// create a prepared statement
-			String query = "UPDATE appointment SET pADate=?,aDate=?,aCause=?,aPatient=?,aDoctor=?,aDay=?"
-					+ "WHERE appointmentID=?";
+			String query = "UPDATE appointments SET aPlacedDate=?,aAppointDate=?,aDoctor=?,aPatient=?,Cause=?"
+					+ "WHERE aID=?";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
@@ -152,26 +151,30 @@ public class Appointment {
 			// preparedStmt.setDate(2, java.sql.Date(date1.getTime());
 
 			preparedStmt.setString(2, appoint_date);
-			preparedStmt.setString(3, cause);
+			preparedStmt.setInt(3, Integer.parseInt(doctorID));
 			preparedStmt.setInt(4, Integer.parseInt(patientID));
-			preparedStmt.setString(5, doctorID);
-			preparedStmt.setString(6, day);
-			preparedStmt.setInt(7, Integer.parseInt(ID));
+			
+			preparedStmt.setString(5, cause);
+			
+			preparedStmt.setInt(6, Integer.parseInt(ID));
 
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
 
-			output = "Updated successfully";
+			String newAppoint = readAppointment();    
+			output = "{\"status\":\"success\", \"data\": \"" +       
+					newAppoint + "\"}";   
 		} catch (Exception e) {
-			output = "Error while updating the appointment.";
+			output = "{\"status\":\"error\", \"data\":         "
+					+ "\"Error while updating the Appointment.\"}"; 
 			System.err.println(e.getMessage());
 		}
 
 		return output;
 	}
 
-	public String deleteAppointment(String ID) {
+	/*public String deleteAppointment(String ID) {
 		String output = "";
 
 		try {

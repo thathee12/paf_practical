@@ -13,6 +13,8 @@ import com.Appointment;
 @WebServlet("/AppointmentAPI")
 public class AppointmentAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	Appointment aObj = new Appointment();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,12 +36,14 @@ public class AppointmentAPI extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//String output = aObj.insertItem(request.getParameter(""),      
-			/*	request.getParameter("itemName"),     
-				request.getParameter("itemPrice"),        
-				request.getParameter("itemDesc")); 
+		
+		String output = aObj.insertAppointment(request.getParameter("placedDate"),      
+				request.getParameter("appointDate"),     
+				request.getParameter("doctorID"),        
+				request.getParameter("patientID"),
+				request.getParameter("cause")); 
 		 
-		 response.getWriter().write(output); */
+		 response.getWriter().write(output); 
 	}
 
 	/**
