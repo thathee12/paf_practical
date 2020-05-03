@@ -23,7 +23,7 @@ public class Appointment {
 		return con;
 	}
 
-	/*public String insertAppointment(String placed_date, String appoint_date, String cause, String patientID,
+	public String insertAppointment(String placed_date, String appoint_date, String cause, String patientID,
 			String doctorID, String day) {
 
 		String output = "";
@@ -36,8 +36,8 @@ public class Appointment {
 			}
 
 			// create a prepared statement
-			String query = " insert into appointments(`appointmentID`,`pADate`,`aDate`,`aPatient`,`aDoctor`,`aCause`)"
-					+ " values (?, ?, ?, ?, ?, ?,?)";
+			String query = " insert into appointments(`appointmentID`,`pADate`,`aDate`,`aCause`,`aPatient`,`aDoctor`)"
+					+ " values (?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
@@ -48,24 +48,26 @@ public class Appointment {
 			// preparedStmt.setDate(2, java.sql.Date(date1.getTime());
 
 			preparedStmt.setString(3, appoint_date);
-			preparedStmt.setString(4, cause);
+			preparedStmt.setInt(4, Integer.parseInt(doctorID));
 			preparedStmt.setInt(5, Integer.parseInt(patientID));
-			preparedStmt.setString(6, doctorID);
-			preparedStmt.setString(7, day);
-
+			preparedStmt.setString(6, cause);
+			
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
 
-			output = "Inserted successfully";
+			String newAppoint = readAppointment();   
+			output = "{\"status\":\"success\", \"data\": \"" +      
+			newAppoint+ "\"}"; 
 
 		} catch (Exception e) {
-			output = "ERROR while inserting the Appointment!";
+			output = "{\"status\":\"error\", \"data\":         "
+					+ "\"Error while inserting the appointment.\"}"; 
 			System.err.println(e.getMessage());
 		}
 
 		return output;
-	}*/
+	}
 
 	public String readAppointment() {
 		String output = "";
