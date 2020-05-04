@@ -64,6 +64,7 @@ $(document).on("click", ".btnUpdate", function(event) {
 	$("#doctorID").val($(this).closest("tr").find('td:eq(2)').text());    
 	$("#patientID").val($(this).closest("tr").find('td:eq(3)').text()); 
 	$("#cause").val($(this).closest("tr").find('td:eq(4)').text());
+	
 }); 
 
 
@@ -113,10 +114,36 @@ function onItemDeleteComplete(response, status) {
 		$("#alertError").text("Error while deleting.");
 		$("#alertError").show();
 	} else {
-		$("#alertError").text("Unknown error while delete..");
+		$("#alertError").text("Unknown error while deleting..");
 		$("#alertError").show();
 	}
 
 }
 
+function onItemUpdateComplete(response, status) {
+
+	if (status == "success") {
+		var resultSet = JSON.parse(response);
+
+		if (resultSet.status.trim() == "success") {
+			$("#alertSuccess").text("Successfully updated.");
+			$("#alertSuccess").show();
+
+			$("#divAppointmentGrid").html(resultSet.data);
+		} else if (resultSet.status.trim() == "error") {
+			$("#alertError").text(resultSet.data);
+			$("#alertError").show();
+		}
+
+	} else if (status == "error") {
+		$("#alertError").text("Error while updating.");
+		$("#alertError").show();
+	} else {
+		$("#alertError").text("Unknown error while updating..");
+		$("#alertError").show();
+	}
+
+	$("#hidAppointIDSave").val("");
+	$("#formAppoint")[0].reset();
+}
 

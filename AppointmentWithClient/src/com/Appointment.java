@@ -95,8 +95,7 @@ public class Appointment {
 				String cause = rs.getString("cause");
 
 				// Add into the html table
-				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"
-				+ aID + "'>" + placedDate + "</td>";
+				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"+ aID + "'>" + placedDate + "</td>";
 				output += "<td>" + appointDate + "</td>";
 				output += "<td>" + doctorID + "</td>";
 				output += "<td>" + patientID + "</td>";
@@ -125,7 +124,7 @@ public class Appointment {
 		return output;
 	}
 
-	public String updateAppointment(String aID, String placedDate, String appointDate,String doctorID, String patientID,String cause) {
+	public String updateAppointment(String ID, String placedDate, String appointDate,String doctorID, String patientID,String cause) {
 		String output = "";
 
 		try {
@@ -147,7 +146,7 @@ public class Appointment {
 			preparedStmt.setInt(3, Integer.parseInt(doctorID));
 			preparedStmt.setInt(4, Integer.parseInt(patientID));
 			preparedStmt.setString(5, cause);	
-			preparedStmt.setInt(6, Integer.parseInt(aID));
+			preparedStmt.setInt(6, Integer.parseInt(ID));
 
 			// execute the statement
 			preparedStmt.execute();
