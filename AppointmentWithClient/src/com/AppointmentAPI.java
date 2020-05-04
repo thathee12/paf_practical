@@ -55,7 +55,7 @@ public class AppointmentAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request); 
-		String output = aObj.updateAppointment(paras.get("hidAppointmentIDSave").toString(),
+		String output = aObj.updateAppointment(paras.get("hidAppointIDSave").toString(),
 				paras.get("placedDate").toString(),     
 				paras.get("appointDate").toString(),       
 				paras.get("doctorID").toString(),        
@@ -71,6 +71,11 @@ public class AppointmentAPI extends HttpServlet {
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Map paras = getParasMap(request); 
+		 
+		 String output = aObj.deleteAppointment(paras.get("aID").toString()); 
+		 
+		 response.getWriter().write(output); 
 	}
 
 	private static Map getParasMap(HttpServletRequest request) {
