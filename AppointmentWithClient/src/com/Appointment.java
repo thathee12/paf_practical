@@ -60,7 +60,7 @@ public class Appointment {
 			newAppoint+ "\"}"; 
 
 		} catch (Exception e) {
-			output = "{\"status\":\"error\", \"data\":         "
+			output = "{\"status\":\"error\", \"data\":"
 					+ "\"Error while inserting the appointment.\"}"; 
 			System.err.println(e.getMessage());
 		}
@@ -79,8 +79,9 @@ public class Appointment {
 			}
 
 			// Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>&nbsp; Appointment ID &nbsp; </th><th>Placed Date</th>"
-					+ "<th>Appointment Date</th><th>Patient ID</th><th>Doctor ID</th><th>Cause</th>"
+			output = "<table border= '1'><tr><th>Placed Date</th>"
+					+"<th>Appointment Date</th><th>Patient ID</th>"
+							+ "<th>Doctor ID</th><th>Cause</th>"
 					+ "<th>Update</th><th>Remove</th></tr>";
 
 			String query = "select * from appointments";
@@ -89,30 +90,30 @@ public class Appointment {
 
 			// iterate through the rows in the result set
 			while (rs.next()) {
-				String appointmentID = Integer.toString(rs.getInt("appointmentID"));
-				String pADate = rs.getString("placedDate");
-				String aDate = rs.getString("appointDate");
-				String aPatient = Integer.toString(rs.getInt("doctorID"));
-				String aDoctor = Integer.toString(rs.getInt("patientID"));
-				String aCause = rs.getString("casuse");
+				String aID = Integer.toString(rs.getInt("aID"));
+				String pADate = rs.getString("aPlacedDate");
+				String aDate = rs.getString("aAppointDate");
+				String aDoctor = Integer.toString(rs.getInt("doctorID"));
+				String aPatient = Integer.toString(rs.getInt("patientID"));
+				String aCause = rs.getString("cause");
 
 				// Add into the html table
-				output += "<tr><td><input id='hidAppointIDUpdate'" + " name ='hidAppointIDUpdate' type='hidden' "
-						+ "value='" + appointmentID + "'>";
-				output += "<td>" + pADate + "</td>";
+				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"
+				+ aID + "'>" + pADate + "</td>";
 				output += "<td>" + aDate + "</td>";
-				output += "<td>" + aPatient + "</td>";
 				output += "<td>" + aDoctor + "</td>";
+				output += "<td>" + aPatient + "</td>";
+				
 				output += "<td>" + aCause + "</td>";
 
 				// buttons
-				output += "<td><input name='btnUpdate' type='button'       "
+				output += "<td><input name='btnUpdate' type='button'"
 						+ "value='Update'           "
-						+ "class='btnUpdate btn btn-secondary'></td>      "
-						+ "<td><input name='btnRemove' type='button'       "
-						+ "value='Remove'           "
+						+ "class='btnUpdate btn btn-secondary'></td>"
+						+ "<td><input name='btnRemove' type='button'"
+						+ "value='Remove'"
 						+ "class='btnRemove btn btn-danger' data-appointmentid='"
-						+ appointmentID + "'>" + "</td></tr>";
+						+ aID + "'>" + "</td></tr>";
 			}
 
 			con.close();
