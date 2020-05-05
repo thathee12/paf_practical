@@ -95,10 +95,10 @@ public class Appointment {
 				String cause = rs.getString("cause");
 
 				// Add into the html table
-				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"+ aID + "'>&nbsp;" + placedDate + "&nbsp;</td>";
-				output += "<td>&nbsp;" + appointDate + "&nbsp;</td>";
-				output += "<td>&nbsp;" + doctorID + "&nbsp;</td>";
-				output += "<td>&nbsp;" + patientID + "&nbsp;</td>";
+				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"+ aID + "'>" + placedDate + "</td>";
+				output += "<td>" + appointDate + "</td>";
+				output += "<td>" + doctorID + "</td>";
+				output += "<td>" + patientID + "</td>";
 				
 				output += "<td>" + cause + "</td>";
 
