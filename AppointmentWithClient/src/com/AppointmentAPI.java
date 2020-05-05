@@ -56,11 +56,11 @@ public class AppointmentAPI extends HttpServlet {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request); 
 		String output = aObj.updateAppointment(paras.get("hidAppointIDSave").toString(),
-				paras.get("placedDate").toString(),     
-				paras.get("appointDate").toString(),       
+				paras.get("placedDate").toString().replace("%2F", "/"),     
+				paras.get("appointDate").toString().replace("%2F", "/"),       
 				paras.get("doctorID").toString(),        
 				paras.get("patientID").toString(),
-				paras.get("cause").toString());
+				paras.get("cause").toString().replace("+", " ").replace("%2C", ","));
 		
 		response.getWriter().write(output); 
 		

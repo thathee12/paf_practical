@@ -76,10 +76,10 @@ public class Appointment {
 			}
 
 			// Prepare the html table to be displayed
-			output = "<table border= '1'><tr><th>Placed Date</th>"
-					+"<th>Appointment Date</th><th>Patient ID</th>"
-							+ "<th>Doctor ID</th><th>Cause</th>"
-					+ "<th>Update</th><th>Remove</th></tr>";
+			output = "<table border= '1'><tr><th>&nbsp;Placed &nbsp;Date&nbsp;</th>"
+					+"<th>&nbsp;Appointment &nbsp;Date&nbsp;</th><th>&nbsp;Patient &nbsp;ID&nbsp;</th>"
+							+ "<th>&nbsp;Doctor &nbsp;ID&nbsp;</th><th>&nbsp;Cause&nbsp;</th>"
+					+ "<th>&nbsp;Update&nbsp;</th><th>&nbsp;Remove&nbsp;</th></tr>";
 
 			String query = "select * from appointments";
 			Statement stmt = con.createStatement();
@@ -95,10 +95,10 @@ public class Appointment {
 				String cause = rs.getString("cause");
 
 				// Add into the html table
-				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"+ aID + "'>" + placedDate + "</td>";
-				output += "<td>" + appointDate + "</td>";
-				output += "<td>" + doctorID + "</td>";
-				output += "<td>" + patientID + "</td>";
+				output += "<tr><td><input id='hidAppointIDUpdate' name ='hidAppointIDUpdate' type='hidden' value='"+ aID + "'>&nbsp;" + placedDate + "&nbsp;</td>";
+				output += "<td>&nbsp;" + appointDate + "&nbsp;</td>";
+				output += "<td>&nbsp;" + doctorID + "&nbsp;</td>";
+				output += "<td>&nbsp;" + patientID + "&nbsp;</td>";
 				
 				output += "<td>" + cause + "</td>";
 

@@ -25,6 +25,7 @@ $(function () {
 				
 
 				<form id="formAppoint" name="formAppoint" method="post" action="index.jsp">
+				<br>
 					Placed Date: <input id="placedDate" name="placedDate" type="text"
 						class="form-control form-control-sm"> <br>
 					Appointment Date: <input id="appointDate" name="appointDate"
@@ -32,14 +33,14 @@ $(function () {
 					Doctor ID: <input id="doctorID" name="doctorID" type="text"
 						class="form-control form-control-sm"> <br> Patient
 					ID: <input id="patientID" name="patientID" type="text"
-						class="form-control form-control-sm"> <br> Cause: <input
+						class="form-control form-control-sm"> <br> Symptoms: <input
 						id="cause" name="cause" type="text"
 						class="form-control form-control-sm">
 						 <br> 
 						 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 
 						<input type="hidden" id= "hidAppointIDSave" name="hidAppointIDSave" value="">
 				</form>
-				<br><br>
+				<br>
 				<div id="alertSuccess" class="alert alert-success"></div>
 				<div id="alertError" class="alert alert-danger"></div>
 
