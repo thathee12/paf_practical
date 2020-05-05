@@ -104,7 +104,7 @@ public class Appointment {
 
 				// buttons
 				output += "<td><input name='btnUpdate' type='button'"
-						+ "value='Update'           "
+						+ "value='Update'"
 						+ "class='btnUpdate btn btn-secondary'></td>"
 						+ "<td><input name='btnRemove' type='button'"
 						+ "value='Remove'"
@@ -135,7 +135,8 @@ public class Appointment {
 			}
 
 			// create a prepared statement
-			String query = "UPDATE appointments SET placedDate=?,appointDate=?,doctorID=?,patientID=?,cause=? WHERE aID=?";
+			String query = "UPDATE appointments SET "
+					+ "placedDate=?,appointDate=?,doctorID=?,patientID=?,cause=? WHERE aID=?";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 

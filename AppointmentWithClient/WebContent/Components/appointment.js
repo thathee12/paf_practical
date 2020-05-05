@@ -22,7 +22,8 @@ $(document).on("click", "#btnSave", function(event) {
 	// If valid
 	var type = ($("#hidAppointIDSave").val() == "") ? "POST" : "PUT";
 
-	$.ajax({
+	$.ajax(
+{
 		url : "AppointmentAPI",
 		type : type,
 		data : $("#formAppoint").serialize(),
@@ -52,7 +53,7 @@ $(document)
 				".btnUpdate",
 				function(event) {
 					$("#hidAppointIDSave").val(
-							$(this).closest("tr").find('#hidAppointUpdate')
+							$(this).closest("tr").find('#hidAppointIDUpdate')
 									.val());
 					$("#placedDate").val(
 							$(this).closest("tr").find('td:eq(0)').text());
