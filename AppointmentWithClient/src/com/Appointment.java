@@ -77,8 +77,8 @@ public class Appointment {
 
 			// Prepare the html table to be displayed
 			output = "<table border= '1'><tr><th>&nbsp;Placed &nbsp;Date&nbsp;</th>"
-					+"<th>&nbsp;Appointment &nbsp;Date&nbsp;</th><th>&nbsp;Patient &nbsp;ID&nbsp;</th>"
-							+ "<th>&nbsp;Doctor &nbsp;ID&nbsp;</th><th>&nbsp;Cause&nbsp;</th>"
+					+"<th>&nbsp;Appointment &nbsp;Date&nbsp;</th><th>&nbsp;Doctor &nbsp;ID&nbsp;</th>"
+							+ "<th>&nbsp;Patient &nbsp;ID&nbsp;</th><th>&nbsp;Cause&nbsp;</th>"
 					+ "<th>&nbsp;Update&nbsp;</th><th>&nbsp;Remove&nbsp;</th></tr>";
 
 			String query = "select * from appointments";
